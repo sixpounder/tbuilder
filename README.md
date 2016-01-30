@@ -1,5 +1,7 @@
 # TBUILDER
 
+[![Build Status](https://travis-ci.org/sixpounder/tbuilder.svg?branch=master)](https://travis-ci.org/sixpounder/tbuilder)
+
 A simple module to generate folders/file structures from templates. Useful to create application skeletons from personal templates.
 
 ## Usage
