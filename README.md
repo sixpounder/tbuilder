@@ -18,8 +18,9 @@ var builder = new TBuilder({
 });
 
 builder
-  .build({ source: './source', target: '/some/target/path'})
-  .on('error', function(err) {
+  .build({ source: './source', target: '/some/target/path'}, function(err) {
+    // Done
+  }).on('error', function(err) {
     console.log("Whoops!");
   });
   // .on(...)
@@ -31,7 +32,7 @@ builder
 - **template**: *function* the function used to compile a template from a file. By default, *template* function from lodash is used.
 - **templateSettings**: *object* options for the template function. Since **template** defaults to lodash template function, this will be a reference to _.templateSettings.
 
-# Build options
+## Build options
 - **ext**: *string* the extension to look in files to process. Default is *.template*. This means every file with that extension will be processed. The specified extension is removed on the compiled version. Example:
 
 ```bash
@@ -39,6 +40,9 @@ builder
 ```
 - **source**: *string* the root of the source directory containing the files to build
 - **target**: *string* the directory in which files will be built
+
+## Build callback
+A *function* that will be called once the build is complete, providing an *error* if something went wrong.
 
 
 ## Events
