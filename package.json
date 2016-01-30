@@ -1,0 +1,22 @@
+{
+  "name": "tbuilder",
+  "version": "1.0.0",
+  "description": "A simple module to generate folders/file structures from templates",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [
+    "template",
+    "generator",
+    "lodash"
+  ],
+  "author": "Andrea Coronese",
+  "email": "sixpounder@protonmail.com",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "async": "^1.5.2",
+    "fs-extra": "^0.26.5",
+    "lodash": "^4.0.1"
+  }
+}
