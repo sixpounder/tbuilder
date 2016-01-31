@@ -33,11 +33,13 @@ builder
 - **templateSettings**: *object* options for the template function. Since **template** defaults to lodash template function, this will be a reference to _.templateSettings.
 
 ## Build options
-- **ext**: *string* the extension to look in files to process. Default is *.template*. This means every file with that extension will be processed. The specified extension is removed on the compiled version. Example:
+- **ext**: *string* the extension to look in files to process. Default is *.template*. The specified extension is removed on the compiled version. Example:
 
 ```bash
   /source/file1.js.template -> /target/file1.js
+  /source/readme.md -> /target/readme.md
 ```
+
 - **source**: *string* the root of the source directory containing the files to build
 - **target**: *string* the directory in which files will be built
 

@@ -1,7 +1,7 @@
 var assert = require('assert');
 var TBuilder = require('./index');
 
-var builder = new TBuilder({test: true});
+var builder = new TBuilder({test: false});
 builder.on('begin', function(path) {
   // console.log("Walking " + path);
 }).on('error', function(err) {

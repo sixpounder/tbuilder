@@ -1,6 +1,6 @@
 {
   "name": "tbuilder",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A simple module to generate folders/file structures from templates",
   "main": "index.js",
   "scripts": {
