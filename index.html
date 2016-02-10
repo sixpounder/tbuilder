@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Tbuilder by sixpounder</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>Tbuilder</h1>
+          <h2>A simple module to generate folders/file structures from templates</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/sixpounder/tbuilder/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/sixpounder/tbuilder/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/sixpounder/tbuilder" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <h1>
+<a id="tbuilder" class="anchor" href="#tbuilder" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>TBUILDER</h1>
+
+<p><a href="https://travis-ci.org/sixpounder/tbuilder"><img src="https://travis-ci.org/sixpounder/tbuilder.svg?branch=master" alt="Build Status"></a></p>
+
+<p>A simple module to generate folders/file structures from templates. Useful to create application skeletons from personal templates.</p>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a> Usage</h2>
+
+<div class="highlight highlight-source-shell"><pre>npm install [--save] tbuilder</pre></div>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> TBuilder <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>tbuilder<span class="pl-pds">'</span></span>);
+<span class="pl-k">var</span> builder <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">TBuilder</span>({
+  exitOnError<span class="pl-k">:</span> <span class="pl-c1">true</span>,
+  test<span class="pl-k">:</span> <span class="pl-c1">false</span>,
+  template<span class="pl-k">:</span> <span class="pl-smi">_</span>.<span class="pl-smi">template</span>
+});
+
+builder
+  .<span class="pl-en">build</span>({ source<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>./source<span class="pl-pds">'</span></span>, target<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>/some/target/path<span class="pl-pds">'</span></span>}, <span class="pl-k">function</span>(<span class="pl-smi">err</span>) {
+    <span class="pl-c">// Done</span>
+  }).<span class="pl-en">on</span>(<span class="pl-s"><span class="pl-pds">'</span>error<span class="pl-pds">'</span></span>, <span class="pl-k">function</span>(<span class="pl-smi">err</span>) {
+    <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">"</span>Whoops!<span class="pl-pds">"</span></span>);
+  });
+  <span class="pl-c">// .on(...)</span></pre></div>
+
+<h2>
+<a id="constructor-options" class="anchor" href="#constructor-options" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Constructor options</h2>
+
+<ul>
+<li>
+<strong>exitOnError</strong>: <em>boolean</em> stops the build process if some error occurs while processing a file. Default is true.</li>
+<li>
+<strong>test</strong>: <em>boolean</em> defaults to false. If true, no files or folder will be created during the build.</li>
+<li>
+<strong>template</strong>: <em>function</em> the function used to compile a template from a file. By default, <em>template</em> function from lodash is used.</li>
+<li>
+<strong>templateSettings</strong>: <em>object</em> options for the template function. Since <strong>template</strong> defaults to lodash template function, this will be a reference to _.templateSettings.</li>
+</ul>
+
+<h2>
+<a id="build-options" class="anchor" href="#build-options" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Build options</h2>
+
+<ul>
+<li>
+<strong>ext</strong>: <em>string</em> the extension to look in files to process. Default is <em>.template</em>. The specified extension is removed on the compiled version. Example:</li>
+</ul>
+
+<div class="highlight highlight-source-shell"><pre>  /source/file1.js.template -<span class="pl-k">&gt;</span> /target/file1.js
+  /source/readme.md -<span class="pl-k">&gt;</span> /target/readme.md</pre></div>
+
+<ul>
+<li>
+<strong>source</strong>: <em>string</em> the root of the source directory containing the files to build</li>
+<li>
+<strong>target</strong>: <em>string</em> the directory in which files will be built</li>
+</ul>
+
+<h2>
+<a id="build-callback" class="anchor" href="#build-callback" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Build callback</h2>
+
+<p>A <em>function</em> that will be called once the build is complete, providing an <em>error</em> if something went wrong.</p>
+
+<h2>
+<a id="events" class="anchor" href="#events" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Events</h2>
+
+<ul>
+<li>
+<strong>error</strong>: fired when an error occurs</li>
+<li>
+<strong>file</strong>: emitted when a file is found and queued for processing</li>
+<li>
+<strong>directory</strong>: emitted when a sub directory of <em>source</em> path is walked by the crawler</li>
+<li>
+<strong>compiled</strong>: emitted when a template is successfully compiled</li>
+<li>
+<strong>generated</strong>: emitted when a file under <em>target</em> is successfully created</li>
+<li>
+<strong>end</strong>: emitted when the build process completes</li>
+</ul>
+        </section>
+
+        <footer>
+          Tbuilder is maintained by <a href="https://github.com/sixpounder">sixpounder</a><br>
+          This page was generated by <a href="https://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
